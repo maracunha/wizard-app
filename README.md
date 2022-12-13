@@ -8,4 +8,4 @@ This is a personal project to test these technologies:
 
 ## Live test
 
-Here you can access the [wizard app](https://nextjs.org) to test and see it working. 
+Here you can access the [wizard app](https://wizard-app-sigma.vercel.app) to test and see it working. 
