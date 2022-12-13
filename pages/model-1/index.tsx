@@ -19,7 +19,7 @@ const Model_1 = ({ data }: ModelProps) => {
 
   return (
       <Wizard initialValues={initialValues} onSubmit={onSubmit}>
-        <StepOne data={data} />
+        <StepOne  />
         <StepTwo />
       </Wizard>
   );

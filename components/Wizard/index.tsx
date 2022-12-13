@@ -7,11 +7,10 @@ import {
   useCallback,
   useState,
 } from 'react';
-import { Form, Formik } from 'formik';
+import { Form, Formik, FormikHelpers } from 'formik';
 
 interface AppContextInterface {
   previous: Function;
-  Next: Function;
   setCanSubmit: Dispatch<SetStateAction<boolean>>;
 }
 
@@ -43,10 +42,10 @@ const Wizard = ({ children, initialValues, onSubmit }: WizardProps) => {
 
   const previous = useCallback(() => {
     setStepNumber((prevState) => Math.max(prevState - 1, 0));
-  }, [snapshot, stepNumber]);
+  }, []);
 
   const handleSubmit = useCallback(
-    (values: object, bag: object): void => {
+    (values: object, bag: FormikHelpers<typeof values>) => {
       if (isLastStep || canSubmit) {
         console.log('hit the end')
         setSnapshot(() => values);
@@ -59,7 +58,7 @@ const Wizard = ({ children, initialValues, onSubmit }: WizardProps) => {
   );
 
   return (
-    <WizardContext.Provider value={{ previous, next, setCanSubmit }}>
+    <WizardContext.Provider value={{ previous, setCanSubmit }}>
       <Formik initialValues={snapshot} onSubmit={handleSubmit}>
         <Form>{step}</Form>
       </Formik>
